@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Melanie Perez Rojano - Data Engineer especializada en llevar claridad a datos de emprendedores. Decisiones basadas en datos, no en intuición.">
+    <title>Melanie Perez Rojano | Data Engineer para tu Negocio</title>
+    
+    <style>
+        /* ============================================
+           RESET Y VARIABLES GLOBALES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Colores principales */
+            --color-primary: #2C5282;      /* Azul oscuro - acento profesional */
+            --color-secondary: #1A1A1A;    /* Negro profundo */
+            --color-light: #FFFFFF;        /* Blanco puro */
+            --color-beige: #F5F3F0;        /* Beige suave - fondo */
+            --color-gray: #6B7280;         /* Gris para texto secundario */
+            --color-accent: #D4A574;       /* Bronce/dorado sutil */
+            
+            /* Tipografía */
+            --font-serif: 'Georgia', 'Garamond', serif;
+            --font-sans: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            
+            /* Espaciado */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-secondary);
+            background-color: var(--color-light);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           TIPOGRAFÍA
+           ============================================ */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.05rem;
+            color: var(--color-gray);
+        }
+
+        strong {
+            color: var(--color-secondary);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           BOTONES
+           ============================================ */
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: 2px solid transparent;
+            border-radius: 4px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-light);
+        }
+
+        .btn-primary:hover {
+            background-color: #1e3f5a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(44, 82, 130, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-primary);
+            color: var(--color-light);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* ============================================
+           NAVEGACIÓN
+           ============================================ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: var(--spacing-md) var(--spacing-xl);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-xl);
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--color-secondary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-secondary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ============================================
+           SECCIONES GENERALES
+           ============================================ */
+        section {
+            padding: var(--spacing-2xl) var(--spacing-lg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .container-sm {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, var(--color-light) 0%, var(--color-beige) 100%);
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            min-height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            color: var(--color-secondary);
+            margin-bottom: var(--spacing-lg);
+            font-size: 3rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-gray);
+            margin-bottom: var(--spacing-xl);
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .hero-cta .btn {
+            padding: var(--spacing-sm) var(--spacing-xl);
+            font-size: 1.05rem;
+        }
+
+        .hero-trust {
+            font-size: 0.95rem;
+            color: var(--color-gray);
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(26, 26, 26, 0.1);
+        }
+
+        /* ============================================
+           SECCIÓN SOBRE MÍ
+           ============================================ */
+        .about {
+            background-color: var(--color-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: var(--color-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .about-text p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .about-highlight {
+            background-color: var(--color-beige);
+            padding: var(--spacing-lg);
+            border-left: 4px solid var(--color-primary);
+            margin: var(--spacing-lg) 0;
+            border-radius: 4px;
+        }
+
+        .about-highlight strong {
+            color: var(--color-primary);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .stat-label {
+            color: var(--color-gray);
+            font-size: 0.95rem;
+            margin-top: var(--spacing-xs);
+        }
+
+        /* ============================================
+           SECCIÓN SERVICIOS
+           ============================================ */
+        .services {
+            background-color: var(--color-beige);
+        }
+
+        .services h2 {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            color: var(--color-secondary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+        }
+
+        .service-card {
+            background-color: var(--color-light);
+            padding: var(--spacing-xl);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-card h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.75rem;
+        }
+
+        .service-card p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-list {
+            list-style: none;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .service-list li {
+            padding: var(--spacing-sm) 0;
+            padding-left: var(--spacing-lg);
+            position: relative;
+            color: var(--color-gray);
+        }
+
+        .service-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* ============================================
+           SECCIÓN PORTAFOLIO
+           ============================================ */
+        .portfolio {
+            background-color: var(--color-light);
+        }
+
+        .portfolio h2 {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-secondary);
+        }
+
+        .portfolio-subtitle {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto var(--spacing-2xl);
+            color: var(--color-gray);
+            font-size: 1.1rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+        }
+
+        .portfolio-item {
+            background: linear-gradient(135deg, var(--color-beige) 0%, #E8E4DF 100%);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #2C5282 0%, #1e3f5a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: var(--spacing-md);
+        }
+
+        .portfolio-content {
+            padding: var(--spacing-lg);
+        }
+
+        .portfolio-content h4 {
+            color: var(--color-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .portfolio-content p {
+            font-size: 0.95rem;
+            color: var(--color-gray);
+        }
+
+        /* ============================================
+           SECCIÓN CTA (Llamada a la acción)
+           ============================================ */
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #1e3f5a 100%);
+            color: var(--color-light);
+            text-align: center;
+            padding: var(--spacing-2xl) var(--spacing-lg);
+        }
+
+        .cta-section h2 {
+            color: var(--color-light);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto var(--spacing-xl);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons .btn {
+            padding: var(--spacing-sm) var(--spacing-xl);
+            font-size: 1rem;
+        }
+
+        .cta-buttons .btn-primary {
+            background-color: var(--color-accent);
+            color: var(--color-secondary);
+        }
+
+        .cta-buttons .btn-primary:hover {
+            background-color: #c0944f;
+        }
+
+        .cta-buttons .btn-secondary {
+            border-color: var(--color-light);
+            color: var(--color-light);
+        }
+
+        .cta-buttons .btn-secondary:hover {
+            background-color: var(--color-light);
+            color: var(--color-primary);
+        }
+
+        /* ============================================
+           SECCIÓN CONTACTO
+           ============================================ */
+        .contact {
+            background-color: var(--color-light);
+        }
+
+        .contact h2 {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-secondary);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info h3 {
+            color: var(--color-secondary);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-gray);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .contact-method {
+            padding: var(--spacing-md);
+            background-color: var(--color-beige);
+            border-radius: 6px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--color-secondary);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .contact-method:hover {
+            border-color: var(--color-primary);
+            background-color: var(--color-light);
+        }
+
+        .contact-method strong {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-primary);
+            font-size: 1.1rem;
+        }
+
+        /* Formulario de contacto */
+        .contact-form {
+            background-color: var(--color-beige);
+            padding: var(--spacing-xl);
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+            color: var(--color-secondary);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid #D1D5DB;
+            border-radius: 4px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background-color: var(--color-secondary);
+            color: var(--color-light);
+            text-align: center;
+            padding: var(--spacing-xl);
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .nav-menu {
+                gap: var(--spacing-lg);
+            }
+
+            .nav-menu a {
+                font-size: 0.9rem;
+            }
+
+            /* Mostrar menú hamburguesa en móvil */
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: var(--color-light);
+                flex-direction: column;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-menu.active {
+                max-height: 300px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu li {
+                padding: var(--spacing-md) var(--spacing-lg);
+                border-bottom: 1px solid var(--color-beige);
+            }
+
+            .nav-menu a {
+                display: block;
+            }
+
+            /* Grid responsivo */
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .hero-cta .btn {
+                width: 100%;
+            }
+
+            section {
+                padding: var(--spacing-xl) var(--spacing-md);
+            }
+
+            .contact-methods {
+                flex-direction: row;
+            }
+
+            .contact-method {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            h3 {
+                font-size: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+                margin-bottom: var(--spacing-md);
+            }
+
+            .hero-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .hero-cta .btn {
+                padding: var(--spacing-sm) var(--spacing-md);
+                font-size: 0.95rem;
+            }
+
+            p {
+                font-size: 0.95rem;
+            }
+
+            .service-card {
+                padding: var(--spacing-lg);
+            }
+
+            .contact-methods {
+                flex-direction: column;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+            }
+
+            section {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+
+            nav {
+                padding: var(--spacing-md);
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         NAVEGACIÓN
+         ============================================ -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">MP</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#about">Sobre mí</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#portfolio">Portafolio</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Deja de adivinar.<br>Empieza a decidir con datos reales.</h1>
+            <p class="hero-subtitle">
+                Convierto datos desordenados en decisiones claras, sin tecnicismos innecesarios. 
+                El rigor de un Data Engineer con la claridad que necesita tu negocio.
+            </p>
+            <div class="hero-cta">
+                <a href="https://wa.me/+573XX XXXXXXX?text=Hola%20Melanie%2C%20quiero%20saber%20más%20sobre%20tus%20servicios" 
+                   class="btn btn-primary" target="_blank">Habla conmigo por WhatsApp</a>
+                <a href="#contact" class="btn btn-secondary">Enviar mensaje</a>
+            </div>
+            <p class="hero-trust">
+                ✓ Data Engineer especializada en Scale-ups | ✓ Estudiante de Máster en Analítica de Datos
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN SOBRE MÍ
+         ============================================ -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>De los datos al control</h2>
+                    <p>
+                        Pasé años en entornos corporativos donde el rigor técnico era obligatorio. 
+                        Aprendí a estructurar datos, automatizar procesos y hacer que todo funcionara con precisión.
+                    </p>
+                    <p>
+                        Pero luego vi algo que no me soltaba: <strong>miles de negocios reales tomando decisiones 
+                        sin acceso a esa claridad.</strong> Empresarios navegando entre hojas de Excel rotas, datos que 
+                        no confiaban, decisiones basadas en intuición.
+                    </p>
+                    <div class="about-highlight">
+                        No estaban buscando aprender a programar. Buscaban <strong>entender su negocio con certeza.</strong>
+                    </div>
+                    <p>
+                        Por eso cambié mi enfoque. No trabajé hacia arriba ni hacia abajo… sino hacia el medio. 
+                        Hoy traduzco el lenguaje corporativo a acciones que los emprendedores pueden usar de inmediato.
+                    </p>
+                </div>
+                <div>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Proyectos completados</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Clientes satisfechos</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">5 años</div>
+                            <div class="stat-label">Experiencia corporativa</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100K+</div>
+                            <div class="stat-label">En ingresos recuperados</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN SERVICIOS
+         ============================================ -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Lo que ofrezco</h2>
+            <div class="services-grid">
+                <!-- Servicio 1: Lo hago por ti -->
+                <div class="service-card">
+                    <h3>Lo hago por ti</h3>
+                    <p>
+                        No tienes tiempo ni necesitas aprender a programar. Yo me encargo de limpiar, 
+                        estructurar y visualizar tus datos para que veas claridad de inmediato.
+                    </p>
+                    <ul class="service-list">
+                        <li>Auditoría y limpieza de datos</li>
+                        <li>Dashboards personalizados (Ventas, Clientes, Operaciones)</li>
+                        <li>Automatización de reportes</li>
+                        <li>Integración de fuentes de datos</li>
+                        <li>Seguimiento y optimización continua</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-block">Solicitar consulta</a>
+                </div>
+
+                <!-- Servicio 2: Te enseño a hacerlo -->
+                <div class="service-card">
+                    <h3>Te enseño a hacerlo</h3>
+                    <p>
+                        Quieres aprender a gestionar tus datos sin depender de terceros. Te entreno 
+                        con un lenguaje práctico, sin tecnicismos innecesarios.
+                    </p>
+                    <ul class="service-list">
+                        <li>Formación en gestión de datos</li>
+                        <li>Mentorías 1:1 personalizadas</li>
+                        <li>Diseño de estructuras de datos escalables</li>
+                        <li>Herramientas prácticas (Excel avanzado, BI basics)</li>
+                        <li>Seguimiento post-capacitación</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-block">Conocer programa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN PORTAFOLIO
+         ============================================ -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2>Casos de éxito</h2>
+            <p class="portfolio-subtitle">
+                Estos dashboards transformaron cómo los emprendedores ven su negocio. 
+                Pasaron de "no sé qué está pasando" a "sé exactamente dónde invertir cada peso".
+            </p>
+            <div class="portfolio-grid">
+                <!-- Portfolio 1: Dashboard de Ventas -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        📊 Dashboard de Ventas
+                    </div>
+                    <div class="portfolio-content">
+                        <h4>E-commerce: Visibilidad de Ventas</h4>
+                        <p>
+                            Integré 3 plataformas de ventas en un solo dashboard. 
+                            El cliente pasó de revisar 5 pestañas a tener claridad en 30 segundos.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Portfolio 2: Dashboard de Clientes -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        👥 Dashboard de Clientes
+                    </div>
+                    <div class="portfolio-content">
+                        <h4>Logística: Segmentación de Clientes</h4>
+                        <p>
+                            Identificamos los clientes más rentables y su comportamiento de compra. 
+                            Aumentaron ingresos en un 23% en 3 meses.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Portfolio 3: Dashboard de Operaciones -->
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        ⚙️ Dashboard Operacional
+                    </div>
+                    <div class="portfolio-content">
+                        <h4>Cadena de Locales: Control Operacional</h4>
+                        <p>
+                            Automatizamos reportes de inventario y desempeño por sucursal. 
+                            Reducimos tiempo administrativo en 15 horas semanales.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CTA SECTION
+         ============================================ -->
+    <section class="cta-section">
+        <div class="container-sm">
+            <h2>¿Listo para ver tu negocio con claridad?</h2>
+            <p>
+                No necesitas ser un experto en tecnología. Solo necesitas un socio que traduzca 
+                esos datos confusos en decisiones que impulsen tu crecimiento.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/+573XX XXXXXXX?text=Quiero%20saber%20m%C3%A1s%20sobre%20cómo%20puedes%20ayudarme" 
+                   class="btn btn-primary" target="_blank">Agendar una consulta</a>
+                <a href="#contact" class="btn btn-secondary">Dejar mi información</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SECCIÓN CONTACTO
+         ============================================ -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Hablemos</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>¿Cuál es el primer paso?</h3>
+                    <p>
+                        Una consulta inicial de 20 minutos (sin costo). Te cuento cómo trabajo 
+                        y entiendo exactamente qué necesitas para convertir tus datos en control.
+                    </p>
+                    <div class="contact-methods">
+                        <a href="https://wa.me/+573XX XXXXXXX?text=Hola%20Melanie%2C%20quisiera%20agendar%20una%20consulta" 
+                           class="contact-method" target="_blank">
+                            <strong>WhatsApp</strong>
+                            Respondo en minutos
+                        </a>
+                        <a href="mailto:melanie@sinaptica.co" class="contact-method">
+                            <strong>Email</strong>
+                            Para consultas detalladas
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Nombre de tu empresa</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">¿Cuál es tu principal desafío con los datos?</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer>
+        <p>© 2026 Melanie Perez Rojano | Data Engineer especializada en Scale-ups</p>
+    </footer>
+
+    <!-- ============================================
+         JAVASCRIPT (Funcionalidad básica)
+         ============================================ -->
+    <script>
+        // Toggle menú móvil
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Manejo del formulario de contacto
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const message = document.getElementById('message').value;
+
+            // Crear mensaje de WhatsApp
+            const whatsappMessage = `Hola Melanie,%0A%0ANombre: ${name}%0ACorreo: ${email}%0AEmpresa: ${company}%0ADesafío: ${message}`;
+            
+            // Redirigir a WhatsApp
+            window.open(`https://wa.me/?text=${whatsappMessage}`, '_blank');
+            
+            // Limpiar formulario
+            form.reset();
+        });
+
+        // Smooth scroll navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
